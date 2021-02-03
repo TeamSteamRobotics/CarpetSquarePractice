@@ -13,9 +13,11 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Drive;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.RedA;
 import frc.robot.commands.TestAutonomous;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -30,10 +32,11 @@ public class RobotContainer {
   Timer timer = new Timer();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
-  
+  private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final TestAutonomous m_testAutonomous = new TestAutonomous(m_driveSubsystem);
+  private final RedA m_redA = new RedA(m_driveSubsystem, m_visionSubsystem);
 
   //private final Drive m_drive = new Drive(() -> stick.getY(), () -> stick.getX(), m_driveSubsystem);
 
@@ -68,7 +71,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     //return m_autoCommand;
-    return m_testAutonomous;
-  
+    //return m_testAutonomous;
+    return m_redA;
   }
 }

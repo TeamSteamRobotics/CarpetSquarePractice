@@ -7,7 +7,10 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -16,11 +19,15 @@ public class RedA extends SequentialCommandGroup {
   /**
    * Creates a new RedA.
    */
-  public RedA() {
+  public RedA(DriveSubsystem driveSubsystem, VisionSubsystem visionSubsystem) {
     // Add your commands in the super() call, e.g.
-    // super(new FooCommand(), new BarCommand());
+    // super(new FooCommand(), new BarCommand());super();
+    
     super(
-      
+      // new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
+       new DriveDistance(driveSubsystem,  -visionSubsystem.getTargetDistance())
+
+       
     );
   }
 }

@@ -29,7 +29,7 @@ public final class Constants {
         public static final class GyroTurnPID {
             public static final double kP = .9 / 69.0;
             public static final double kI = .5 / 75;
-            public static final double kD = 2.0 / 690;
+            public static final double kD = 3.0 / 690; //2.0 / 690;
 
             public static final double posTolerance = 2;
             public static final double velTolerance = 2;

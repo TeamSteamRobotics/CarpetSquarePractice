@@ -46,7 +46,7 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public void drive(double speed, double turn, boolean squareInputs){
-    diffDrive.arcadeDrive(speed, MathUtil.clamp(turn,-0.75, 0.75), squareInputs);
+    diffDrive.arcadeDrive(-speed, MathUtil.clamp(turn,-0.75, 0.75), squareInputs);
   }
 
   public void autoDrive(double forward, double turn){
