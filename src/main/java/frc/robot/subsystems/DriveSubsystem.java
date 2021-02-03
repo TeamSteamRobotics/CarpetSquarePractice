@@ -49,9 +49,15 @@ public class DriveSubsystem extends SubsystemBase {
     diffDrive.arcadeDrive(speed, MathUtil.clamp(turn,-0.75, 0.75), squareInputs);
   }
 
- /* public double getDistance() {
+  public void autoDrive(double forward, double turn){
+    forward += Math.copySign(.05, forward);
+    turn += Math.copySign(.03, turn);
+    drive(forward, turn, false);
+  }
+
+  public double getDistance() {
     return DriveConstants.feetPerTick *(leftFront.getSelectedSensorPosition() - rightFront.getSelectedSensorPosition())/2.0;
-  } */
+  } 
 
   //For autonomous practice only
   public void turnRight() {
