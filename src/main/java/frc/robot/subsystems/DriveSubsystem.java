@@ -16,15 +16,16 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
   //WPI_TalonSRX leftBack = new WPI_TalonSRX(0);
-  WPI_VictorSPX rightBack = new WPI_VictorSPX(0);
-  WPI_TalonSRX rightFront = new WPI_TalonSRX(1);
+  WPI_TalonFX rightBack = new WPI_TalonFX(2);
+  WPI_TalonFX rightFront = new WPI_TalonFX(3);
   //WPI_TalonSRX rightBack = new WPI_TalonSRX(2);
-  WPI_VictorSPX leftBack = new WPI_VictorSPX(2);
-  WPI_TalonSRX leftFront = new WPI_TalonSRX(3);
+  WPI_TalonFX leftBack = new WPI_TalonFX(1);
+  WPI_TalonFX leftFront = new WPI_TalonFX(0);
 
   SpeedControllerGroup left = new SpeedControllerGroup(leftFront, leftBack);
   SpeedControllerGroup right = new SpeedControllerGroup(rightFront, rightBack);
@@ -45,7 +46,7 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public void drive(double speed, double turn, boolean squareInputs){
-    diffDrive.arcadeDrive(speed, turn, squareInputs);
+    diffDrive.arcadeDrive(speed, MathUtil.clamp(turn,-0.75, 0.75), squareInputs);
   }
 
  /* public double getDistance() {
