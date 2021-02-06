@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class DriveForXSec extends CommandBase {
+public class TurnForXSec extends CommandBase {
   /**
    * Creates a new DriveForXSec.
    */
@@ -18,7 +18,7 @@ public class DriveForXSec extends CommandBase {
   double endTime;
   double currentTime;
 
-  public DriveForXSec(DriveSubsystem driveSubsystem, double endTime) {
+  public TurnForXSec(DriveSubsystem driveSubsystem, double endTime) {
     // Use addRequirements() here to declare subsystem dependencies.
   this.driveSubsystem = driveSubsystem;
   this.endTime = endTime;

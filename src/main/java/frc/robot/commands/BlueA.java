@@ -7,26 +7,30 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class TestAutonomous extends SequentialCommandGroup {
+public class BlueA extends SequentialCommandGroup {
   /**
-   * Creates a new TestAutonomous.
+   * Creates a new RedB.
    */
-  public TestAutonomous(DriveSubsystem drive) {
+  public BlueA(DriveSubsystem driveSubsystem, VisionSubsystem visionSubsystem) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-     //new GoForward(drive, timer, 2.0),
-     new DriveForXSec(drive, 75)
-    // new GyroTurn(drive, 90),
-    // new GoForward(drive, timer, 2.0)
-    //new DriveForXSec(drive, 2000)
+      new DriveDistance(driveSubsystem, visionSubsystem.getTargetDistance()),
+      new TurnForXSec(driveSubsystem, 30),
+      new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
+      new DriveDistance(driveSubsystem, visionSubsystem.getTargetDistance()),
+      new TurnForXSec(driveSubsystem, -50),
+      new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
+      new DriveDistance(driveSubsystem, 20/*replace with actual distance*/)
+
+
     );
   }
 }

@@ -24,8 +24,14 @@ public class RedA extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());super();
     
     super(
-      // new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
-       new DriveDistance(driveSubsystem,  -visionSubsystem.getTargetDistance())
+       new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
+       new DriveDistance(driveSubsystem,  -visionSubsystem.getTargetDistance()),
+       new TurnForXSec(driveSubsystem, 30),
+       new GyroTurn(driveSubsystem, visionSubsystem.getAngle()),
+       new DriveDistance(driveSubsystem,  -visionSubsystem.getTargetDistance()),
+       new GyroTurn(driveSubsystem, Math.atan(3)),//new TurnForXSec(driveSubsystem, 4 /*replace with ~70 degrees*/),
+       new DriveDistance(driveSubsystem, 20) //replace with actual value)
+       
 
        
     );
